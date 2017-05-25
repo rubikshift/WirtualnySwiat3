@@ -20,6 +20,7 @@ class Organism:
             #Sprawdzic czy zajete
             ok = True
         self.Position = x, y
+        self.WorldToLive.AddOrganism(self)
 
     def GetOlder(self):
         self.Age += 1

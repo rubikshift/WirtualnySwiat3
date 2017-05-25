@@ -1,4 +1,7 @@
-class WorldField(enumerate):
+from enum import Enum
+
+
+class Species(Enum):
     EMPTY = 0
     ANTELOPE = 1
     BELLADONA = 2
