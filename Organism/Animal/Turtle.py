@@ -2,13 +2,18 @@ from World import WorldField as Species
 from Organism.Animal import Animal
 from random import randint as rand
 
+
 class Turtle(Animal):
-    def __init__(self, worldToLive, position=0):
+    def __init__(self, worldToLive, position=None):
         super().__init__(2, 1, worldToLive, position)
         self.Species = Species.TURTLE
 
+    def __repr__(self):
+        return "Zolw"
+
     def DeflectedAttack(self, enemy):
         if enemy.Strength < 5:
+            self.WorldToLive.AddLog(str(self) + " odbija atak " + str(enemy))
             return True
         else:
             return False
@@ -28,3 +33,4 @@ class Turtle(Animal):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
             young = Turtle(self.WorldToLive, childPosition)
+            super().Reproduce()

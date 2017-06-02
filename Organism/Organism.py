@@ -2,7 +2,7 @@ from random import randint as rand
 
 
 class Organism:
-    def __init__(self, strength, initiative, worldToLive, position=0):
+    def __init__(self, strength, initiative, worldToLive, position=None):
         self.Strength = strength
         self.Initiative = initiative
         self.WorldToLive = worldToLive
@@ -10,15 +10,17 @@ class Organism:
         self.IsDead = False
         self.IsTurnAllowed = False
         ok = False
-        if position != 0:
+        if position is not None:
             x, y = position
             self.Position = x, y
             ok = True
         while not ok:
             x = rand(0, worldToLive.Width)
             y = rand(0, worldToLive.Height)
-            #Sprawdzic czy zajete
-            ok = True
+            p = x, y
+            o = worldToLive.FindOrganism(p)
+            if o is None:
+                ok = True
         self.Position = x, y
         self.WorldToLive.AddOrganism(self)
 
@@ -30,7 +32,6 @@ class Organism:
         self.WorldToLive.Map[x][y] = self.Species
 
     def Fight(self, enemy):
-        #dodac logi
         if self.Strength >= enemy.Strength:
             self.Kill(enemy)
         else:
@@ -43,13 +44,13 @@ class Organism:
         return False
 
     def Eat(self, somePlant):
-        #dodac logi
+        self.WorldToLive.AddLog(str(self) + " zjada " + str(somePlant))
         somePlant.Collide(self)
         somePlant.Die()
 
     def Buff(self, buffValue):
         self.Strength += buffValue
-        #dodac logi
+        self.WorldToLive.AddLog(str(self) + " staje sie silniejszy")
 
     def Die(self):
         self.IsDead = True
@@ -58,4 +59,8 @@ class Organism:
         self.IsTurnAllowed = True
 
     def Kill(self, anotherOrganism):
+        self.WorldToLive.AddLog(str(self) + " zabija " + str(anotherOrganism))
         anotherOrganism.Die()
+
+    def Poison(self):
+        self.IsDead = True

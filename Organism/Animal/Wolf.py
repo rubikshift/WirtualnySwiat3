@@ -3,9 +3,12 @@ from Organism.Animal import Animal
 
 
 class Wolf(Animal):
-    def __init__(self, worldToLive, position=0):
+    def __init__(self, worldToLive, position=None):
         super().__init__(9, 5, worldToLive, position)
         self.Species = Species.WOLF
+
+    def __repr__(self):
+        return "Wilk"
 
     def Collide(self, anotherOrganism):
         if isinstance(anotherOrganism, Wolf):
@@ -17,3 +20,4 @@ class Wolf(Animal):
         childPosition = self.GetChildPostion()
         if childPosition != self.Position:
             young = Wolf(self.WorldToLive, childPosition)
+            super().Reproduce()

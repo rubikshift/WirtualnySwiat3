@@ -5,10 +5,13 @@ from random import randint as rand
 
 
 class Antelope(Animal):
-    def __init__(self, worldToLive, position=0):
+    def __init__(self, worldToLive, position=None):
         super().__init__(4, 4, worldToLive, position)
         self.MoveDistance = 2
         self.Species = Species.ANTELOPE
+
+    def __repr__(self):
+        return "Antylopa"
 
     def Collide(self, anotherOrganism):
         if isinstance(anotherOrganism, Antelope):
@@ -26,7 +29,7 @@ class Antelope(Animal):
         i = rand(1, 100)
         if i <= 50 and self.WorldToLive.IsEmptyNear(self.Position):
             self.Position = self.GetChildPosition()
-            #dodac logi
+            self.WorldToLive.AddLog(str(self) + " uciekla")
             return True
         else:
             return False

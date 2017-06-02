@@ -3,9 +3,12 @@ from Organism.Plant import Plant
 
 
 class Grass(Plant):
-    def __init__(self, worldToLive, position=0):
+    def __init__(self, worldToLive, position=None):
         super().__init__(0, worldToLive, position)
         self.Species = Species.GRASS
+
+    def __repr__(self):
+        return "Trawa"
 
     def Act(self):
         for i in range(0, 3):
@@ -15,3 +18,4 @@ class Grass(Plant):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
             young = Grass(self.WorldToLive, childPosition)
+            super().Reproduce()

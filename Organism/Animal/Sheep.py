@@ -3,9 +3,12 @@ from Organism.Animal import Animal
 
 
 class Sheep(Animal):
-    def __init__(self, worldToLive, position=0):
+    def __init__(self, worldToLive, position=None):
         super().__init__(4, 4, worldToLive, position)
         self.Species = Species.SHEEP
+
+    def __repr__(self):
+        return "Owca"
 
     def Collide(self, anotherOrganism):
         if isinstance(anotherOrganism, Sheep):
@@ -17,3 +20,4 @@ class Sheep(Animal):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
             young = Sheep(self.WorldToLive, childPosition)
+            super().Reproduce()
