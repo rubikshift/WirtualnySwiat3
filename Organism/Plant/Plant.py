@@ -3,6 +3,9 @@ from random import randint as rand
 
 
 class Plant(Organism):
+
+    ReproduceProbability = None
+
     def __init__(self, strength, worldToLive, position=None):
         super().__init__(strength, 0, worldToLive, position)
         self.ReproduceProbability = 35
@@ -17,3 +20,7 @@ class Plant(Organism):
 
     def Poison(self):
         return
+
+    def Collide(self, anotherOrganism):
+        return
+

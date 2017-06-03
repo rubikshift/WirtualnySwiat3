@@ -1,4 +1,4 @@
-from World.WorldField import Species
+from World import WorldField
 
 
 class World:
@@ -17,7 +17,7 @@ class World:
     def Draw(self):
         for x in range(0, self.Width):
             for y in range(0, self.Height):
-                self.Map[x][y] = Species.EMPTY
+                self.Map[x][y] = WorldField.EMPTY
 
         for o in self.Organisms:
             o.Act()

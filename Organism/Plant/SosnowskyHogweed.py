@@ -28,7 +28,7 @@ class SosnowskyHogweed(Plant):
         up = x, y - 1
         down = x, y + 1
 
-        self.WorldToLive.FindOrganism(left).Poison
+        self.WorldToLive.FindOrganism(left).Poison()
         self.WorldToLive.FindOrganism(right).Poison()
         self.WorldToLive.FindOrganism(up).Poison()
         self.WorldToLive.FindOrganism(down).Poison()

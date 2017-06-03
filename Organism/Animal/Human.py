@@ -3,6 +3,12 @@ from World import WorldField as Species
 
 
 class Human(Animal):
+
+    futurePos = None
+    SuperPowerActive = None
+    SuperPowerCoolDown = None
+    SuperPowerTurnsLeft = None
+
     def __init__(self, worldToLive, position=None):
         super().__init__(5, 4, worldToLive, position)
         self.Species = Species.HUMAN

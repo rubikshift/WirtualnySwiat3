@@ -4,6 +4,9 @@ from random import randint as rand
 
 
 class Animal(Organism):
+
+    MoveDistance = None
+
     def __init__(self, strength, initiative, worldToLive, position=None):
         super().__init__(strength, initiative, worldToLive, position)
         self.MoveDistance = 1

@@ -2,6 +2,16 @@ from random import randint as rand
 
 
 class Organism:
+
+    Strength = None
+    Initiative = None
+    WorldToLive = None
+    Age = None
+    IsDead = None
+    IsTurnedAllowed = None
+    Position = None
+    Species = None
+
     def __init__(self, strength, initiative, worldToLive, position=None):
         self.Strength = strength
         self.Initiative = initiative
@@ -64,3 +74,36 @@ class Organism:
 
     def Poison(self):
         self.IsDead = True
+
+    def GetChildPosition(self):
+        x, y = self.Position
+        childPosition = self.Position
+        left = x - 1, y
+        right = x + 1, y
+        up = x, y - 1
+        down = x, y + 1
+
+        oL = self.WorldToLive.FindOrganism(left)
+        oR = self.WorldToLive.FindOrganism(right)
+        oU = self.WorldToLive.FindOrganism(up)
+        oD = self.WorldToLive.FindOrganism(down)
+
+        ok = False
+        while not ok:
+            dir = rand(0, 3)
+
+            if dir == 0 and x - 1 >= 0 and oL is None:
+                childPosition = left
+                ok = True
+            elif dir == 1 and x + 1 < self.WorldToLive.Width and oR is None:
+                childPosition = right
+                ok = True
+            elif dir == 2 and y - 1 >= 0 and oU is None:
+                childPosition = up
+                ok = True
+            elif dir == 3 and y + 1 < self.WorldToLive.Height and oD is None:
+                childPosition = down
+                ok = True
+
+        return childPosition
+

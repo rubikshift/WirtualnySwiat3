@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class Species(Enum):
+class WorldField(Enum):
     EMPTY = 0
     ANTELOPE = 1
     BELLADONA = 2
