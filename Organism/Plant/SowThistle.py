@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Plant import Plant
 
 
@@ -13,5 +13,5 @@ class SowThistle(Plant):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = SowThistle(self.WorldToLive, childPosition)
+            SowThistle(self.WorldToLive, childPosition)
             super().Reproduce()

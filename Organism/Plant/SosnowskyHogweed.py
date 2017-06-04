@@ -1,5 +1,5 @@
 from Organism.Plant import Plant
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 
 
 class SosnowskyHogweed(Plant):
@@ -12,12 +12,12 @@ class SosnowskyHogweed(Plant):
         return "Barsz Sosnowskiego"
 
     def Collide(self, anotherOrganism):
-        anotherOrganism.Posion()
+        anotherOrganism.Poison()
 
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = SosnowskyHogweed(self.WorldToLive, childPosition)
+            SosnowskyHogweed(self.WorldToLive, childPosition)
             super().Reproduce()
 
     def Act(self):
@@ -28,7 +28,16 @@ class SosnowskyHogweed(Plant):
         up = x, y - 1
         down = x, y + 1
 
-        self.WorldToLive.FindOrganism(left).Poison()
-        self.WorldToLive.FindOrganism(right).Poison()
-        self.WorldToLive.FindOrganism(up).Poison()
-        self.WorldToLive.FindOrganism(down).Poison()
+        oL = self.WorldToLive.FindOrganism(left)
+        oR = self.WorldToLive.FindOrganism(right)
+        oU = self.WorldToLive.FindOrganism(up)
+        oD = self.WorldToLive.FindOrganism(down)
+
+        if oL is not None:
+            oL.Poison()
+        if oR is not None:
+            oR.Poison()
+        if oU is not None:
+            oU.Poison()
+        if oD is not None:
+            oD.Poison()

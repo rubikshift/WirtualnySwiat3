@@ -1,5 +1,5 @@
 from Organism.Animal import Animal
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 
 
 class Human(Animal):

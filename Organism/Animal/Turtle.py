@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Animal import Animal
 from random import randint as rand
 
@@ -32,5 +32,5 @@ class Turtle(Animal):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Turtle(self.WorldToLive, childPosition)
+            Turtle(self.WorldToLive, childPosition)
             super().Reproduce()

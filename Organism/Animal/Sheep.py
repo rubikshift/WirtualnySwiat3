@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Animal import Animal
 
 
@@ -19,5 +19,5 @@ class Sheep(Animal):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Sheep(self.WorldToLive, childPosition)
+            Sheep(self.WorldToLive, childPosition)
             super().Reproduce()

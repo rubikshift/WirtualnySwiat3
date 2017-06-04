@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Animal import Animal
 from random import randint as rand
 
@@ -31,16 +31,16 @@ class Fox(Animal):
         ok = False
         while not ok:
             dir = rand(0, 3)
-            if dir == 0 and x - 1 >= 0 and (oL is None or oL.Strength <= self.Strength):
+            if dir == 0 and self.WorldToLive.IsProperPoint(left) and (oL is None or oL.Strength <= self.Strength):
                 futurePos = left
                 ok = True
-            elif dir == 1 and x + 1 < self.WorldToLive.Width and (oR is None or oR.Strength <= self.Strength):
+            elif dir == 1 and self.WorldToLive.IsProperPoint(right) and (oR is None or oR.Strength <= self.Strength):
                 futurePos = right
                 ok = True
-            elif dir == 2 and y - 1 >= 0 and (oU is None or oU.Strength <= self.Strength):
+            elif dir == 2 and self.WorldToLive.IsProperPoint(up) and (oU is None or oU.Strength <= self.Strength):
                 futurePos = up
                 ok = True
-            elif dir == 3 and y + 1 < self.WorldToLive.Height and (oD is None or oD.Strength <= self.Strength):
+            elif dir == 3 and self.WorldToLive.IsProperPoint(down) and (oD is None or oD.Strength <= self.Strength):
                 futurePos = down
                 ok = True
         anotherOrganism = self.WorldToLive.FindOrganism(futurePos)
@@ -63,13 +63,13 @@ class Fox(Animal):
         oU = self.WorldToLive.FindOrganism(up)
         oD = self.WorldToLive.FindOrganism(down)
 
-        if x - 1 >= 0 and (oL is None or oL.Strength <= self.Strength):
+        if self.WorldToLive.IsProperPoint(left) and (oL is None or oL.Strength <= self.Strength):
             return True
-        elif x + 1 < self.WorldToLive.Width and (oR is None or oR.Strength <= self.Strength):
+        elif self.WorldToLive.IsProperPoint(right) and (oR is None or oR.Strength <= self.Strength):
             return True
-        elif y - 1 >= 0 and (oU in None or oU.Strength <= self.Strength):
+        elif self.WorldToLive.IsProperPoint(up) and (oU in None or oU.Strength <= self.Strength):
             return True
-        elif y + 1 < self.WorldToLive.Height and (oD in None or oD.Strength <= self.Strength):
+        elif self.WorldToLive.IsProperPoint(down) and (oD in None or oD.Strength <= self.Strength):
             return True
         else:
             return False

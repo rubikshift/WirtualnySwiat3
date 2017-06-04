@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Plant import Plant
 
 
@@ -17,5 +17,5 @@ class Grass(Plant):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Grass(self.WorldToLive, childPosition)
+            Grass(self.WorldToLive, childPosition)
             super().Reproduce()

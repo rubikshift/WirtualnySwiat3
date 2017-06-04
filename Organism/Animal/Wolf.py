@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Animal import Animal
 
 
@@ -14,10 +14,10 @@ class Wolf(Animal):
         if isinstance(anotherOrganism, Wolf):
             self.Reproduce()
         else:
-            super().Collide()
+            super().Collide(anotherOrganism)
 
     def Reproduce(self):
-        childPosition = self.GetChildPostion()
+        childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Wolf(self.WorldToLive, childPosition)
+            Wolf(self.WorldToLive, childPosition)
             super().Reproduce()

@@ -1,6 +1,6 @@
 from Organism.Animal import Animal
 from Organism.Plant import Plant
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from random import randint as rand
 
 
@@ -22,7 +22,7 @@ class Antelope(Animal):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Antelope(self.WorldToLive, childPosition)
+            Antelope(self.WorldToLive, childPosition)
             super().Reproduce()
 
     def RunAway(self):

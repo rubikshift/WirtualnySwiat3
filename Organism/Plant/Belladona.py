@@ -1,5 +1,5 @@
 from Organism.Plant import Plant
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 
 
 class Belladona(Plant):
@@ -14,7 +14,7 @@ class Belladona(Plant):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Belladona(self.WorldToLive, childPosition)
+            Belladona(self.WorldToLive, childPosition)
             super().Reproduce()
 
     def Collide(self, anotherOrganism):

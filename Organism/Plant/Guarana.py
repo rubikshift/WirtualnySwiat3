@@ -1,4 +1,4 @@
-from World import WorldField as Species
+from World.WorldField import WorldField as Species
 from Organism.Plant import Plant
 
 
@@ -13,7 +13,7 @@ class Guarana(Plant):
     def Reproduce(self):
         childPosition = self.GetChildPosition()
         if childPosition != self.Position:
-            young = Guarana(self.WorldToLive, childPosition)
+            Guarana(self.WorldToLive, childPosition)
             super().Reproduce()
 
     def Collide(self, anotherOrganism):

@@ -8,7 +8,7 @@ class Organism:
     WorldToLive = None
     Age = None
     IsDead = None
-    IsTurnedAllowed = None
+    IsTurnAllowed = None
     Position = None
     Species = None
 
@@ -88,20 +88,23 @@ class Organism:
         oU = self.WorldToLive.FindOrganism(up)
         oD = self.WorldToLive.FindOrganism(down)
 
+        if self.WorldToLive.IsEmptyNear(self.Position) is False:
+            return childPosition
+
         ok = False
         while not ok:
             dir = rand(0, 3)
 
-            if dir == 0 and x - 1 >= 0 and oL is None:
+            if dir == 0 and self.WorldToLive.CheckPoint(left) and oL is None:
                 childPosition = left
                 ok = True
-            elif dir == 1 and x + 1 < self.WorldToLive.Width and oR is None:
+            elif dir == 1 and self.WorldToLive.CheckPoint(right) and oR is None:
                 childPosition = right
                 ok = True
-            elif dir == 2 and y - 1 >= 0 and oU is None:
+            elif dir == 2 and self.WorldToLive.CheckPoint(up) and oU is None:
                 childPosition = up
                 ok = True
-            elif dir == 3 and y + 1 < self.WorldToLive.Height and oD is None:
+            elif dir == 3 and self.WorldToLive.CheckPoint(down) and oD is None:
                 childPosition = down
                 ok = True
 

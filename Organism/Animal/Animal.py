@@ -22,13 +22,13 @@ class Animal(Organism):
         ok = False
         while not ok:
             dir = rand(0, 3)
-            if dir == 0 and x - 1 >= 0:
+            if dir == 0 and self.WorldToLive.CheckPoint(left):
                 futurePos = left
-            elif dir == 1 and x + 1 < self.WorldToLive.Width:
+            elif dir == 1 and self.WorldToLive.CheckPoint(right):
                 futurePos = right
-            elif dir == 2 and y - 1 >= 0:
+            elif dir == 2 and self.WorldToLive.CheckPoint(up):
                 futurePos = up
-            elif dir == 3 and y + 1 < self.WorldToLive.Heigth:
+            elif dir == 3 and self.WorldToLive.CheckPoint(down):
                 futurePos = down
 
             if self.Position != futurePos:
