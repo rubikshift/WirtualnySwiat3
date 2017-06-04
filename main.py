@@ -7,12 +7,6 @@ from Organism import *
 if __name__ == '__main__':
 
     w = World(10, 10)
-    for i in range(4):
-        Sheep(w)
-        Turtle(w)
-        Wolf(w)
-        SosnowskyHogweed(w)
-    CyberSheep(w)
-    CyberSheep(w)
+    w.Load()
     while True:
         w.MakeTurn()

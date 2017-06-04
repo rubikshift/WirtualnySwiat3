@@ -6,8 +6,8 @@ class Plant(Organism):
 
     ReproduceProbability = None
 
-    def __init__(self, strength, worldToLive, position=None):
-        super().__init__(strength, 0, worldToLive, position)
+    def __init__(self, strength, worldToLive, position=None, file=None):
+        super().__init__(strength, 0, worldToLive, position, file)
         self.ReproduceProbability = 35
 
     def Act(self):

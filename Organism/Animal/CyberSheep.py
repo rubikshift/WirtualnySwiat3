@@ -3,8 +3,8 @@ from World.WorldField import WorldField as Species
 
 
 class CyberSheep(Animal):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(11, 4, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(11, 4, worldToLive, position, file)
         self.Species = Species.CYBER_SHEEP
 
     def __repr__(self):

@@ -3,8 +3,8 @@ from World.WorldField import WorldField as Species
 
 
 class Belladona(Plant):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(99, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(99, worldToLive, position, file)
         self.ReproduceProbability = 15
         self.Species = Species.BELLADONA
 

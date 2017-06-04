@@ -4,8 +4,8 @@ from random import randint as rand
 
 
 class Turtle(Animal):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(2, 1, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(2, 1, worldToLive, position, file)
         self.Species = Species.TURTLE
 
     def __repr__(self):

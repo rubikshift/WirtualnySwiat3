@@ -7,8 +7,8 @@ class Animal(Organism):
 
     MoveDistance = None
 
-    def __init__(self, strength, initiative, worldToLive, position=None):
-        super().__init__(strength, initiative, worldToLive, position)
+    def __init__(self, strength, initiative, worldToLive, position=None, file=None):
+        super().__init__(strength, initiative, worldToLive, position, file)
         self.MoveDistance = 1
 
     def Act(self):

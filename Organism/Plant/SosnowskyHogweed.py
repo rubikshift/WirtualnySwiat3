@@ -3,13 +3,13 @@ from World.WorldField import WorldField as Species
 
 
 class SosnowskyHogweed(Plant):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(10, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(10, worldToLive, position, file)
         self.Species = Species.SOSNOWSKY_HOGWEED
         self.ReproduceProbability = 15
 
     def __repr__(self):
-        return "Barsz Sosnowskiego"
+        return "Barszcz Sosnowskiego"
 
     def Collide(self, anotherOrganism):
         anotherOrganism.Poison()

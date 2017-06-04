@@ -4,8 +4,8 @@ from random import randint as rand
 
 
 class Fox(Animal):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(3, 7, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(3, 7, worldToLive, position, file)
         self.Species = Species.FOX
 
     def __repr__(self):

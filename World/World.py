@@ -1,6 +1,6 @@
 from World.WorldField import WorldField
 from math import inf, sqrt
-from Organism.Plant import SosnowskyHogweed
+from Organism import *
 
 
 class World:
@@ -39,9 +39,49 @@ class World:
         return
 
     def Save(self):
+        f = open("zapis.txt", "w", encoding="utf-8")
+        f.write(str(self.Width) + '\n')
+        f.write(str(self.Height) + '\n')
+        f.write(str(self.Turn) + '\n')
+        for o in self.Organisms:
+            if o.IsDead is False:
+                o.Save(f)
+        f.close()
         return
 
     def Load(self):
+        f = open("zapis.txt", "r", encoding="utf-8")
+        self.Width = int(f.readline())
+        self.Height = int(f.readline())
+        self.Turn = int(f.readline())
+        while True:
+            s = f.readline()
+            if s == '':
+                break
+            elif s == "Owca\n":
+                Sheep(self, file=f)
+            elif s == "Antylopa\n":
+                Antelope(self, file=f)
+            elif s == "Cyber-owca\n":
+                CyberSheep(self, file=f)
+            elif s == "Lis\n":
+                Fox(self, file=f)
+            elif s == "Czlowiek\n":
+                Human(self, file=f)
+            elif s == "Zolw\n":
+                Turtle(self, file=f)
+            elif s == "Wilk\n":
+                Wolf(self, file=f)
+            elif s == "Wilcza jagoda\n":
+                Belladona(self, file=f)
+            elif s == "Guarana\n":
+                Guarana(self, file=f)
+            elif s == "Barszcz Sosnowskiego\n":
+                SosnowskyHogweed(self, file=f)
+            elif s == "Mlecz\n":
+                SowThistle(self, file=f)
+            elif s == "Trawa\n":
+                Grass(self, file=f)
         return
 
     def AddOrganism(self, livingOrganism):

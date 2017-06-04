@@ -3,8 +3,8 @@ from Organism.Animal import Animal
 
 
 class Wolf(Animal):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(9, 5, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(9, 5, worldToLive, position, file)
         self.Species = Species.WOLF
 
     def __repr__(self):

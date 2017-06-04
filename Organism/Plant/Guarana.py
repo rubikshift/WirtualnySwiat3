@@ -3,8 +3,8 @@ from Organism.Plant import Plant
 
 
 class Guarana(Plant):
-    def __init__(self, worldToLive, position=None):
-        super().__init__(0, worldToLive, position)
+    def __init__(self, worldToLive, position=None, file=None):
+        super().__init__(0, worldToLive, position, file)
         self.Species = Species.GUARANA
 
     def __repr__(self):
