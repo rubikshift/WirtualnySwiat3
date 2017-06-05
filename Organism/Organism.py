@@ -30,8 +30,8 @@ class Organism:
 				self.Position = x, y
 				ok = True
 			while not ok:
-				x = rand(0, worldToLive.Width)
-				y = rand(0, worldToLive.Height)
+				x = rand(0, worldToLive.Width - 1)
+				y = rand(0, worldToLive.Height - 1)
 				p = x, y
 				o = worldToLive.FindOrganism(p)
 				if o is None:
@@ -56,7 +56,7 @@ class Organism:
 	def DeflectedAttack(self, enemy):
 		return False
 
-	def RunAway(self, enemy):
+	def RunAway(self):
 		return False
 
 	def Eat(self, somePlant):

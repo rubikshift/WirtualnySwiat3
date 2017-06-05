@@ -57,7 +57,21 @@ class Human(Animal):
 			self.SuperPowerCoolDown = 5
 
 	def Control(self, direction):
-		return
+		x, y = self.Position
+		left = x - self.MoveDistance, y
+		right = x + self.MoveDistance, y
+		up = x, y - self.MoveDistance
+		down = x, y + self.MoveDistance
+		self.futurePos = self.Position
+
+		if direction == 0 and self.WorldToLive.CheckPoint(left):
+			self.futurePos = left
+		elif direction == 1 and self.WorldToLive.CheckPoint(right):
+			self.futurePos = right
+		elif direction == 2 and self.WorldToLive.CheckPoint(up):
+			self.futurePos = up
+		elif direction == 3 and self.WorldToLive.CheckPoint(down):
+			self.futurePos = down
 
 	def Save(self, file):
 		super().Save(file)

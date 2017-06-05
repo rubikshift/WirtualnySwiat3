@@ -14,10 +14,10 @@ class Animal(Organism):
     def Act(self):
         x, y = self.Position
         futurePos = self.Position
-        left = x - 1, y
-        right = x + 1, y
-        up = x, y - 1
-        down = x, y + 1
+        left = x - self.MoveDistance, y
+        right = x + self.MoveDistance, y
+        up = x, y - self.MoveDistance
+        down = x, y + self.MoveDistance
 
         ok = False
         while not ok:
@@ -45,7 +45,7 @@ class Animal(Organism):
     def Collide(self, anotherOrganism):
         if isinstance(anotherOrganism, Plant):
             self.Eat(anotherOrganism)
-        elif not anotherOrganism.DeflectedAttack(self) and not anotherOrganism.RunAway(self):
+        elif not anotherOrganism.DeflectedAttack(self) and not anotherOrganism.RunAway():
             self.Fight(anotherOrganism)
 
     def Reproduce(self):

@@ -16,7 +16,7 @@ class Antelope(Animal):
     def Collide(self, anotherOrganism):
         if isinstance(anotherOrganism, Antelope):
             self.Reproduce()
-        elif isinstance(anotherOrganism, Plant) or not self.RunAway(anotherOrganism):
+        elif isinstance(anotherOrganism, Plant) or not self.RunAway():
             super().Collide(anotherOrganism)
 
     def Reproduce(self):
